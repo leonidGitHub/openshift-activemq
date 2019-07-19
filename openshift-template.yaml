@@ -39,7 +39,7 @@ objects:
           imagePullPolicy: Always
           name: openshift-activemq
           ports:
-          - containerPort: 61616
+          - containerPort: 8080
             protocol: TCP
           - containerPort: 8161
             protocol: TCP
@@ -116,10 +116,10 @@ objects:
       port: 8161
       protocol: TCP
       targetPort: 8161
-    - name: 61616-tcp
-      port: 61616
+    - name: 8080-tcp
+      port: 8080
       protocol: TCP
-      targetPort: 61616
+      targetPort: 8080
     selector:
       app: openshift-activemq
       deploymentconfig: openshift-activemq
@@ -147,10 +147,10 @@ objects:
   metadata:
     labels:
       app: openshift-activemq
-    name: activemq-61616
+    name: activemq-8080
   spec:
     port:
-      targetPort: 61616-tcp
+      targetPort: 8080-tcp
     tls:
       insecureEdgeTerminationPolicy: Redirect
       termination: edge
