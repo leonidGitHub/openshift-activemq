@@ -149,8 +149,7 @@ objects:
       app: openshift-activemq
     name: activemq-8080
   spec:
-    port:
-      targetPort: 8080-tcp
+    host: activemq-8080
     tls:
       insecureEdgeTerminationPolicy: Redirect
       termination: edge
@@ -158,5 +157,4 @@ objects:
       kind: Service
       name: openshift-activemq
       weight: 100
-    wildcardPolicy: None
     
