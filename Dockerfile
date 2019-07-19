@@ -20,9 +20,9 @@ RUN set -x && \
     chown -R :0 /opt/$ACTIVEMQ && \
     chown -h :0 $ACTIVEMQ_HOME && \
     chmod go+rwX -R $ACTIVEMQ_HOME && \
-	mv /users.properties /opt/$ACTIVEMQ_HOME/conf && \
-	mv /groups.properties /opt/$ACTIVEMQ_HOME/conf && \ 
-	mv /activemq.xml /opt/$ACTIVEMQ_HOME/conf && \ 
+	mv /users.properties $ACTIVEMQ_HOME/conf && \
+	mv /groups.properties $ACTIVEMQ_HOME/conf && \ 
+	mv /activemq.xml $ACTIVEMQ_HOME/conf && \ 
     chmod +x /docker-entrypoint.sh
 
 
