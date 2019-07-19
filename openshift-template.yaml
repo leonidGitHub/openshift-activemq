@@ -147,7 +147,7 @@ objects:
   metadata:
     labels:
       app: openshift-activemq
-    name: activemq1
+    name: activemq-61616
   spec:
     port:
       targetPort: 61616-tcp
