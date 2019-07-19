@@ -26,8 +26,6 @@ RUN set -x && \
     chmod +x /docker-entrypoint.sh
 
 
-RUN set -x && \
-
 
 WORKDIR $ACTIVEMQ_HOME
 
