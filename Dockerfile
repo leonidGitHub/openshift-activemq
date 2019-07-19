@@ -9,6 +9,9 @@ ENV ACTIVEMQ_VERSION=5.15.9 \
 ENV ACTIVEMQ=apache-activemq-$ACTIVEMQ_VERSION    
 
 COPY files/docker-entrypoint.sh /docker-entrypoint.sh
+COPY files/users.properties /users.properties
+COPY files/groups.properties /groups.properties
+COPY files/activemq.xml /activemq.xml
 
 RUN set -x && \
     curl -s -S https://archive.apache.org/dist/activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz | tar xvz -C /opt && \
@@ -17,11 +20,13 @@ RUN set -x && \
     chown -R :0 /opt/$ACTIVEMQ && \
     chown -h :0 $ACTIVEMQ_HOME && \
     chmod go+rwX -R $ACTIVEMQ_HOME && \
+	mv /users.properties /opt/$ACTIVEMQ_HOME/conf && \
+	mv /groups.properties /opt/$ACTIVEMQ_HOME/conf && \ 
+	mv /activemq.xml /opt/$ACTIVEMQ_HOME/conf && \ 
     chmod +x /docker-entrypoint.sh
 
-ADD files/users.properties /opt/$ACTIVEMQ_HOME/conf
-ADD files/groups.properties /opt/$ACTIVEMQ_HOME/conf
-ADD files/activemq.xml /opt/$ACTIVEMQ_HOME/conf
+
+RUN set -x && \
 
 
 WORKDIR $ACTIVEMQ_HOME
@@ -31,3 +36,5 @@ EXPOSE 8161
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/bin/sh", "-c", "bin/activemq console"]
+
+
