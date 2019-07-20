@@ -6,4 +6,4 @@ Clone the repository and execute the following command in your cluster to deploy
   oc process -f openshift-template.yaml | oc apply -f - 
 ``` 
 
-hi
+hi2
