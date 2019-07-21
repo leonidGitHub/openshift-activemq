@@ -3,7 +3,6 @@ FROM openjdk:8-jre
 MAINTAINER Chen Wang <chen.wang@telus.com>
 
 ENV ACTIVEMQ_VERSION=5.15.9 \
-    ACTIVEMQ_TCP=61613 \
     ACTIVEMQ_HOME=/opt/activemq
 
 ENV ACTIVEMQ=apache-activemq-$ACTIVEMQ_VERSION    
@@ -29,7 +28,7 @@ RUN set -x && \
 
 WORKDIR $ACTIVEMQ_HOME
 
-EXPOSE 61613
+EXPOSE 61616
 EXPOSE 8161
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
