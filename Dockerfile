@@ -11,6 +11,7 @@ COPY files/docker-entrypoint.sh /docker-entrypoint.sh
 COPY files/users.properties /users.properties
 COPY files/groups.properties /groups.properties
 COPY files/activemq.xml /activemq.xml
+COPY files/log4j.properties /log4j.properties
 
 RUN set -x && \
     curl -s -S https://archive.apache.org/dist/activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz | tar xvz -C /opt && \
@@ -22,6 +23,7 @@ RUN set -x && \
 	mv /users.properties $ACTIVEMQ_HOME/conf && \
 	mv /groups.properties $ACTIVEMQ_HOME/conf && \ 
 	mv /activemq.xml $ACTIVEMQ_HOME/conf && \ 
+	mv /log4j.properties $ACTIVEMQ_HOME/conf && \ 
     chmod +x /docker-entrypoint.sh
 
 
