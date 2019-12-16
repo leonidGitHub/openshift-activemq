@@ -80,7 +80,8 @@ objects:
     runPolicy: Serial
     source:
       git:
-        uri: https://github.com/t873529/openshift-activemq.git
+        #uri: https://github.com/t873529/openshift-activemq.git
+        uri: https://github.com/leonidGitHub/openshift-activemq
       type: Git
     strategy:
       type: Docker
